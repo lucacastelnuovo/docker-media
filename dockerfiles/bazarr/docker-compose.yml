@@ -1,0 +1,31 @@
+version: '3'
+# Docker Bazarr Compose File
+
+services:
+  bazarr:
+
+    image: linuxserver/bazarr
+
+    container_name: bazarr
+    privileged: true
+    restart: always
+    ports:
+      - 6767:6767
+
+    volumes:
+      - /opt/docker-bazarr/config:/config
+      - /etc/localtime:/etc/localtime:ro
+
+      # Map in your Media Shares Below...
+      - /nas:/nas
+
+    environment:
+      - TZ=UTC
+      - PGID=0
+      - PUID=0
+
+    healthcheck:
+      test: curl --fail -s http://localhost:6767/ || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
