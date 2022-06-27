@@ -1,27 +1,21 @@
-version: '3'
-# Docker Sonarr Compose File
+version: "3"
 
 services:
   sonarr:
-
+    privileged: true
     image: linuxserver/sonarr
     container_name: sonarr
-    privileged: true
     restart: always
-    ports:
-      - 8988:8989
-
+    environment:
+      TZ: UTC # TODO: set to local timezone
+      PUID: 0
+      PGID: 0
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /opt/docker-sonarr/config:/config
-
-      # Map in your Media Shares & Download Client's Share(s)...
-      - /nas:/nas
-
-    environment:
-      - TZ=UTC
-      - PGID=0
-      - PUID=0
+      - ./config:/config
+      - /nas:/nas       # TODO: Map in your Media Shares & Download Client's Share(s)...
+    ports:
+      - 8988:8989
 
     healthcheck:
       test: curl --fail -s http://localhost:8988/ || exit 1

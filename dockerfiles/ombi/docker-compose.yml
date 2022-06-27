@@ -1,20 +1,17 @@
-version: '3'
+version: "3"
 
 services:
   ombi:
-
+    privileged: true
     image: linuxserver/ombi
     container_name: ombi
-    privileged: true
     restart: always
+    environment:
+      TZ: UTC # TODO: Set to local timezone
+    volumes:
+      - ./config:/config
     ports:
       - 3579:3579
-
-    volumes:
-      - /opt/docker-ombi/config:/config
-
-    environment:
-      - TZ=UTC
 
     healthcheck:
       test: curl --fail -s http://localhost:3579/ || exit 1

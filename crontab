@@ -1,10 +1,7 @@
-############## GENERAL DOWNLOAD/CLEANUP AUTOMATION ##############
-
 # Remove any old, un-downloaded movies before triggering search-all...
 45 2 * * * /opt/pms-scripts/scripts/radarr/radarr_remove-undownloaded-movies.sh
 
-# Trigger nightly 'Search all' in sonarr/radarr/lidarr for any missing series/episodes...
-30 1 * * * /opt/pms-scripts/scripts/lidarr/lidarr_search-missing-tracks.sh
+# Trigger nightly 'Search all' in sonarr/radarr for any missing series/episodes...
 0 3 * * * /opt/pms-scripts/scripts/radarr/radarr_search-missing-movies.sh
 
 # Cleanup any completed torrents that have been post processed and are just left seeding...
@@ -12,24 +9,3 @@
 
 ## Script to go and remove those pesky embedded movie file names from mp4 files that mess up Plex's auto file names...
 30 3 * * * /opt/pms-scripts/scripts/post-processing/remove-embedded-movie-title-bulk.sh
-
-############## TV TUNER & IPTV ##############
-
-# PUSH EPG DATA FROM WEBGRABP DOCKER CONTAINER TO TVHEADEND - RUNS EVERY 2 HOURS
-25 */2 * * * cat /opt/docker-webgrabplus/config/guide.xml > /opt/docker-tvheadend/config/data/wg.xml
-
-## Create EPG Data/guide for Plex to import (from tvheadend - Runs every hour)
-30 */2 * * * wget http://127.0.0.1:9981/xmltv/channels --user=admin --password=xxxxxxxxx -O /opt/docker-plex/config/iptvGuide.xml
-
-## Fire off API request to Plex to refresh Guide Data from the EPG file we just created (By default plex only does it once a day)
-31 */2 * * * curl -X POST "http://127.0.0.1:32400/livetv/dvrs/1/reloadGuide?X-Plex-Token=xxxxxxxxxx" # NB: you may need to update the number after /dvrs/ to reflect the DVR number you have in Plex
-
-############## MUSIC SERVER ##############
-
-## Import files into funkwhale - Try avoid running in evenings/peak time...
-0 4 * * * /opt/pms-scripts/scripts/funkwhale/funkwhale_bump-files.sh
-0 11 * * * /opt/pms-scripts/scripts/funkwhale/funkwhale_bump-files.sh
-0 16 * * * /opt/pms-scripts/scripts/funkwhale/funkwhale_bump-files.sh
-
-## Cleanup any rouge files that have slipped through beets...
-40 2 * * * find /nas/Music -type f -not -regex '.*\.\(jpg\|png\|mp3\|lrc\)' -delete

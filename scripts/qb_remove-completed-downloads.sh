@@ -15,7 +15,7 @@ QBITTORRENT_PASSWORD=""
 MOVIE_CATAGORY="movies"
 TV_CATAGORY="tv"
 
-REMOVE_AFTER_X_HOURS=720 # Suggest at least 24 hours, so that you maintain a reasonable seed ratio... Defaults to 1 month.
+REMOVE_AFTER_X_HOURS=24 # Suggest at least 24 hours, so that you maintain a reasonable seed ratio... Defaults to 1 month.
 DELETE_FILES_FROM_QBTORRENT="true" # Set to true if you want it to delete any remaining files in the qbittorrent downloads directory...
 
 # qBitTorrent 4.5.x and newer now needs to use a cookie to access the API...

@@ -1,28 +1,21 @@
-version: '3'
-# Docker Bazarr Compose File
+version: "3"
 
 services:
   bazarr:
-
-    image: linuxserver/bazarr
-
-    container_name: bazarr
     privileged: true
+    image: linuxserver/bazarr
+    container_name: bazarr
     restart: always
+    environment:
+      TZ: UTC # TODO: set to local timezone
+      PGID: 0
+      PUID: 0
+    volumes:
+      - ./config:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /nas:/nas       # TODO: Map in your Media Shares Below...
     ports:
       - 6767:6767
-
-    volumes:
-      - /opt/docker-bazarr/config:/config
-      - /etc/localtime:/etc/localtime:ro
-
-      # Map in your Media Shares Below...
-      - /nas:/nas
-
-    environment:
-      - TZ=UTC
-      - PGID=0
-      - PUID=0
 
     healthcheck:
       test: curl --fail -s http://localhost:6767/ || exit 1
