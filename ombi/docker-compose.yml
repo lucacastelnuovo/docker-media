@@ -5,9 +5,12 @@ services:
     privileged: true
     image: linuxserver/ombi
     container_name: ombi
-    restart: always
+    restart: unless-stopped
     environment:
-      TZ: UTC # TODO: Set to local timezone
+      TZ: Europe/Amsterdam
+      PGID: 0
+      PUID: 0
+      # BASE_URL: /ombi
     volumes:
       - ./config:/config
     ports:

@@ -2,9 +2,6 @@
 #
 # An easy way to find all existing videos that have been downloaded and run them through any post processing scripts
 # This is intended to be run just once when setting up your scripts etc...
-# 
-# Author: DN
-# https://github.com/ultimate-pms/ultimate-plex-setup
 #
 ################################################################################################
 
@@ -71,7 +68,7 @@ for filename in "${process_movies[@]}"; do :
     shortName="${filename##*/}"
 
     prog "$taskpercent" $shortName...
-    # ./fake-video --silent --log --video="$filename" 
+    # ./fake-video --silent --log --video="$filename"
     ./convert-to-mp4.sh "$filename"
     exitCode=$?
 

@@ -5,15 +5,15 @@ services:
     privileged: true
     image: linuxserver/sonarr
     container_name: sonarr
-    restart: always
+    restart: unless-stopped
     environment:
-      TZ: UTC # TODO: set to local timezone
-      PUID: 0
+      TZ: Europe/Amsterdam
       PGID: 0
+      PUID: 0
     volumes:
-      - /etc/localtime:/etc/localtime:ro
       - ./config:/config
-      - /nas:/nas       # TODO: Map in your Media Shares & Download Client's Share(s)...
+      - ../data/tv:/tv
+      - ../data/downloads:/downloads
     ports:
       - 8988:8989
 

@@ -5,15 +5,15 @@ services:
     privileged: true
     image: linuxserver/bazarr
     container_name: bazarr
-    restart: always
+    restart: unless-stopped
     environment:
-      TZ: UTC # TODO: set to local timezone
+      TZ: Europe/Amsterdam
       PGID: 0
       PUID: 0
     volumes:
       - ./config:/config
-      - /etc/localtime:/etc/localtime:ro
-      - /nas:/nas       # TODO: Map in your Media Shares Below...
+      - ../data/movies:/movies
+      - ../data/tv:/tv
     ports:
       - 6767:6767
 

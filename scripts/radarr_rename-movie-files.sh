@@ -5,9 +5,6 @@
 # Example:
 #           Source: "xmen.the.last.stand.2006.team-xxx.mkv"
 #           Becomes: "X-Men The Last Stand (2006) HDTV-720p.mkv"
-# 
-# Author: DN
-# https://github.com/ultimate-pms/ultimate-plex-setup
 #
 ################################################################################################
 

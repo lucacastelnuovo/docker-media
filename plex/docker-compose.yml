@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  plex:
+    privileged: true
+    cpu_shares: 2048
+    image: plexinc/pms-docker
+    container_name: plex
+    restart: unless-stopped
+    environment:
+      TZ: Europe/Amsterdam
+      PLEX_UID: 0
+      PLEX_GID: 0
+      PLEX_CLAIM: ${PLEX_CLAIM:?error}
+    volumes:
+      - ./config:/config
+      - ../data:/data
+      - ../data/transcode:/transcode
+    ports:
+      - 32400:32400/tcp

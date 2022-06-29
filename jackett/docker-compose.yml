@@ -5,11 +5,14 @@ services:
     privileged: true
     image: linuxserver/jackett
     container_name: jackett
-    restart: always
+    restart: unless-stopped
+    environment:
+      TZ: Europe/Amsterdam
+      PGID: 0
+      PUID: 0
     volumes:
-      - /etc/localtime:/etc/localtime:ro
       - ./config:/config
-      - /nzbget-downloads/jackett-blackhole:/downloads      # TODO: Configure to point to your mapped "blackhole" directory
+      - ../data/blackhole:/downloads
     ports:
       - 9117:9117
 

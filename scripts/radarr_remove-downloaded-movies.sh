@@ -2,10 +2,6 @@
 #
 # Script to removed files that are already downloaded with quality greater than 1080p and older than 2 years.
 #
-#
-# Author: DN later edtited by 12Nick12
-# https://github.com/ultimate-pms/ultimate-plex-setup
-#
 ################################################################################################
 RADARR_API_KEY="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 RADARR_HOST="127.0.0.1"

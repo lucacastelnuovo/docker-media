@@ -5,20 +5,20 @@ services:
     privileged: true
     image: linuxserver/qbittorrent
     container_name: qbittorrent
-    restart: always
+    restart: unless-stopped
     environment:
-      TZ: UTC # TODO: set to local timezone
-      WEBUI_PORT: 8080
-      PUID: 0
+      TZ: Europe/Amsterdam
       PGID: 0
+      PUID: 0
+      WEBUI_PORT: 8080
       UMASK_SET: 022
     volumes:
       - ./config:/config
-      - /nas:/nas # TODO: Map in the volumes where you would like to save your torrent files...
+      - ../data/qbittorent:/downloads
     ports:
       - 8080:8080
-      - 18999:18999/udp
-      - 18999:18999
+      - 6881:6881
+      - 6881:6881/udp
 
     healthcheck:
       test: curl --fail -s http://localhost:8080/ || exit 1

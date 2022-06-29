@@ -5,7 +5,7 @@ services:
     privileged: true
     image: willfarrell/autoheal
     container_name: autoheal
-    restart: always
+    restart: unless-stopped
     environment:
       AUTOHEAL_CONTAINER_LABEL: all
     volumes:

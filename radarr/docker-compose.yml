@@ -5,19 +5,15 @@ services:
     privileged: true
     image: linuxserver/radarr
     container_name: radarr
-    restart: always
+    restart: unless-stopped
     environment:
-      TZ: UTC # TODO: set to local timezone
-      PUID: 0
+      TZ: Europe/Amsterdam
       PGID: 0
+      PUID: 0
     volumes:
       - ./config:/config
-      - /etc/localtime:/etc/localtime:ro
-      - /nas:/nas # TODO: fix path
-
-      # Volumes for post-processing
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./pp-scripts:/opt/pp-scripts
+      - ../data/movies:/movies
+      - ../data/downloads:/downloads
     ports:
       - 7878:7878
 

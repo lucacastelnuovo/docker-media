@@ -2,9 +2,6 @@
 #
 # Script that hits the Radarr API to search for any missing movies
 # Ideally this should be scheduled with your CRON and run each night
-# 
-# Author: DN
-# https://github.com/ultimate-pms/ultimate-plex-setup
 #
 ################################################################################################
 
