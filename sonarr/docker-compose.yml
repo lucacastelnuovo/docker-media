@@ -14,6 +14,8 @@ services:
       - ./config:/config
       - ../data/tv:/tv
       - ../data/downloads:/downloads
+    networks:
+      - media-proxy
     ports:
       - 8988:8989
 
@@ -22,3 +24,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+
+networks:
+  media-proxy:
+    driver: bridge
+    external: true

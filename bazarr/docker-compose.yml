@@ -14,6 +14,8 @@ services:
       - ./config:/config
       - ../data/movies:/movies
       - ../data/tv:/tv
+    networks:
+      - media-proxy
     ports:
       - 6767:6767
 
@@ -22,3 +24,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+
+networks:
+  media-proxy:
+    driver: bridge
+    external: true

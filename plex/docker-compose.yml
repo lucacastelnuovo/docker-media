@@ -16,5 +16,12 @@ services:
       - ./config:/config
       - ../data:/data
       - ../data/transcode:/transcode
+    networks:
+      - media-proxy
     ports:
       - 32400:32400/tcp
+
+networks:
+  media-proxy:
+    driver: bridge
+    external: true
