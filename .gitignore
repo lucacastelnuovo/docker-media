@@ -1,0 +1,10 @@
+.env
+**/.env
+
+.bash_history
+.bash_logout
+.bashrc
+.cache/
+.profile
+.sudo_as_admin_successful
+snap/
