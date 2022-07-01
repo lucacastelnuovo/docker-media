@@ -6,7 +6,7 @@
 ################################################################################################
 
 # Adjust as needed.
-SEARCH_LOCATION='/nas/*/Movies'
+SEARCH_LOCATION='~/data/movies'
 LOG_FILE="pp-status.txt"
 MIN_SIZE=30M
 FILE_EXTENSIONS=(

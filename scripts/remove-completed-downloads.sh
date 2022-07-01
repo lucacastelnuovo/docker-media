@@ -5,9 +5,9 @@
 #
 #########################################################################################################
 
-QBITTORRENT_HOSTNAME="localhost:8080"
-QBITTORRENT_USERNAME=""
-QBITTORRENT_PASSWORD=""
+QBITTORRENT_HOSTNAME="127.0.0.1:8080"
+QBITTORRENT_USERNAME="admin"
+QBITTORRENT_PASSWORD="adminadmin"
 
 MOVIE_CATAGORY="movies"
 TV_CATAGORY="tv"

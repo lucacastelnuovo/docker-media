@@ -1,14 +1,2 @@
-# Remove any old, un-downloaded movies before triggering search-all...
-45 2 * * * /PATH/radarr_remove-undownloaded-movies.sh
-
-# Trigger nightly 'Search all' in sonarr/radarr for any missing series/episodes...
-0 3 * * * /PATH/radarr_search-missing-movies.sh
-
 # Cleanup any completed torrents that have been post processed and are just left seeding...
-20 * * * * /PATH/qb_remove-completed-downloads.sh
-
-## Script to go and remove those pesky embedded movie file names from mp4 files that mess up Plex's auto file names...
-30 3 * * * /PATH//remove-embedded-movie-title-bulk.sh
-
-## Convert movies to mp4
-# 30 3 * * * /PATH//remove-embedded-movie-title-bulk.sh
+20 * * * * /home/luca/scripts/remove-completed-downloads.sh
