@@ -13,7 +13,7 @@ services:
     volumes:
       - ./config:/config
       - ../data/tv:/tv
-      - ../data/downloads:/downloads
+      - ../data/qbittorent:/downloads
     networks:
       - media-proxy
     ports:
