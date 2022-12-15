@@ -11,7 +11,7 @@ services:
       TZ: Europe/Amsterdam
     volumes:
       - ./config:/config
-      - ../data/torrents:/mnt/media/torrents
+      - ../data/torrents:/downloads
     networks:
       - media-network
     ports:
