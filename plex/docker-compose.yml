@@ -2,12 +2,12 @@ version: "3"
 
 services:
   plex:
-    image: linuxserver/plex:latest
+    image: plexinc/pms-docker:latest
     container_name: plex
     restart: unless-stopped
     environment:
-      PUID: 0
-      PGID: 0
+      PLEX_UID: 0
+      PLEX_GID: 0
       TZ: Europe/Amsterdam
       VERSION: docker
     volumes:
