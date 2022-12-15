@@ -10,7 +10,6 @@ services:
       PGID: 0
       TZ: Europe/Amsterdam
       VERSION: docker
-      PLEX_CLAIM: ${PLEX_CLAIM:?error}
     volumes:
       - ./config:/config
       - ../data/tv:/tv

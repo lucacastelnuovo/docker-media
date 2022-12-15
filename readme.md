@@ -16,10 +16,7 @@ cd sonarr && docker-compose up -d && cd ..
 cd radarr && docker-compose up -d && cd ..
 # open http://10.0.20.20:8988 and configure indexer & download client
 
-cd plex && cp .env.example .env
-# set plex claim token in .env
-
-docker-compose up -d && cd ..
+cd plex && docker-compose up -d && cd ..
 # open http://10.0.20.20:32400 and configure your plex server
 
 cd ombi && docker-compose up -d && cd ..
