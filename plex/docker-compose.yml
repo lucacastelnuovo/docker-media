@@ -15,6 +15,7 @@ services:
       - ./config:/config
       - ../data/tv:/tv
       - ../data/movies:/movies
+    network_mode: host
     networks:
       - media-network
     ports:
