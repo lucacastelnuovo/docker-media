@@ -2,14 +2,15 @@ version: "3"
 
 services:
   plex:
-    image: plexinc/pms-docker:latest
+    image: linuxserver/plex:latest
     container_name: plex
     restart: unless-stopped
     environment:
-      PLEX_UID: 0
-      PLEX_GID: 0
+      PUID: 0
+      PGID: 0
       TZ: Europe/Amsterdam
       VERSION: docker
+      PLEX_CLAIM: claim-XXXXXXXXXXXXXXXXXXXX
     volumes:
       - ./config:/config
       - ../data/tv:/tv
