@@ -1,8 +1,27 @@
-### Useful URLs:
+### Installation
 
-- Jackett - `http://<server-ip>:9117/UI/Dashboard` - Start here, configure your torrent indexers to start
-- Transmission - `http://<server-ip>:9091/` - This is your torrent client, you will need to configure save-file location, password etc
-- Sonarr - `http://<server-ip>:8988/` - Configure, then add in all your favorite TV series you want to start auto-downloading
-- Radarr `http://<server-ip>:7878/` - Configure Movies you want to start auto-downloading
-- Plex - `http://<server-ip>:22500/` - **Access Your Plex Media Server!**
-- Ombi - `http://<server-ip>:3579/` - Allow your friends and family to "request" new Series, Movies etc to be added to your server (This way they don't need access to Radarr/Sonarr/Lidarr)
+```
+git clone https://github.com/Luca-Castelnuovo/media.ltc.git && cd media.ltc
+mv * ../ && cd ../ && rm -rf media.ltc
+
+cd jackett && docker-compose up -d && cd ..
+# open http://10.0.20.20:9117/UI/Dashboard and configure your torrent indexers
+
+cd transmission && docker-compose up -d && cd ..
+# open http://10.0.20.20:9091 and configure your torrent client
+
+cd sonarr && docker-compose up -d && cd ..
+# open http://10.0.20.20:8988 and configure indexer & download client
+
+cd radarr && docker-compose up -d && cd ..
+# open http://10.0.20.20:8988 and configure indexer & download client
+
+cd plex && cp .env.example .env
+# set plex claim token in .env
+
+docker-compose up -d && cd ..
+# open http://10.0.20.20:32400 and configure your plex server
+
+cd ombi && docker-compose up -d && cd ..
+# open http://10.0.20.20:3579 and configure your ombi server
+```
