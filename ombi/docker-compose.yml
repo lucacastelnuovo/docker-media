@@ -1,23 +1,20 @@
 version: "3"
 
 services:
-  plex:
-    image: linuxserver/plex:latest
-    container_name: plex
+  ombi:
+    image: linuxserver/ombi:latest
+    container_name: ombi
     restart: unless-stopped
     environment:
       PUID: 1000
       PGID: 1000
       TZ: Europe/Amsterdam
-      VERSION: docker
     volumes:
       - ./config:/config
-      - ../data/tv:/tv
-      - ../data/movies:/movies
     networks:
       - media-network
     ports:
-      - 32400:32400/tcp
+      - 3579:3579
 
 networks:
   media-network:

@@ -2,30 +2,22 @@ version: "3"
 
 services:
   sonarr:
-    privileged: true
-    image: linuxserver/sonarr
+    image: linuxserver/sonarr:latest
     container_name: sonarr
     restart: unless-stopped
     environment:
+      PUID: 1000
+      PGID: 1000
       TZ: Europe/Amsterdam
-      PGID: 0
-      PUID: 0
     volumes:
       - ./config:/config
-      - ../data/tv:/tv
-      - ../data/qbittorent:/downloads
+      - ../data:/mnt/media
     networks:
-      - media-proxy
+      - media-network
     ports:
       - 8988:8989
 
-    healthcheck:
-      test: curl --fail -s http://localhost:8988/ || exit 1
-      interval: 30s
-      timeout: 10s
-      retries: 3
-
 networks:
-  media-proxy:
+  media-network:
     driver: bridge
     external: true

@@ -2,30 +2,22 @@ version: "3"
 
 services:
   radarr:
-    privileged: true
-    image: linuxserver/radarr
+    image: linuxserver/radarr:latest
     container_name: radarr
     restart: unless-stopped
     environment:
+      PUID: 1000
+      PGID: 1000
       TZ: Europe/Amsterdam
-      PGID: 0
-      PUID: 0
     volumes:
       - ./config:/config
-      - ../data/movies:/movies
-      - ../data/qbittorent:/downloads
+      - ../data:/mnt/media
     networks:
-      - media-proxy
+      - media-network
     ports:
       - 7878:7878
 
-    healthcheck:
-      test: curl --fail -s http://localhost:7878/ || exit 1
-      interval: 30s
-      timeout: 10s
-      retries: 3
-
 networks:
-  media-proxy:
+  media-network:
     driver: bridge
     external: true

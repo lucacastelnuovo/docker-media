@@ -1,23 +1,23 @@
 version: "3"
 
 services:
-  plex:
-    image: linuxserver/plex:latest
-    container_name: plex
+  transmission:
+    image: linuxserver/transmission:latest
+    container_name: transmission
     restart: unless-stopped
     environment:
       PUID: 1000
       PGID: 1000
       TZ: Europe/Amsterdam
-      VERSION: docker
     volumes:
       - ./config:/config
-      - ../data/tv:/tv
-      - ../data/movies:/movies
+      - ../data/torrents:/mnt/media/torrents
     networks:
       - media-network
     ports:
-      - 32400:32400/tcp
+      - 9091:9091
+      - 49153:49153
+      - 49153:49153/udp
 
 networks:
   media-network:

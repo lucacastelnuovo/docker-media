@@ -2,28 +2,22 @@ version: "3"
 
 services:
   jackett:
-    image: linuxserver/jackett
+    image: linuxserver/jackett:latest
     container_name: jackett
     restart: unless-stopped
     environment:
+      PUID: 1000
+      PGID: 1000
       TZ: Europe/Amsterdam
-      PGID: 0
-      PUID: 0
     volumes:
       - ./config:/config
-      - ../data/blackhole:/downloads
+      - ../data/torrents/completed:/downloads
     networks:
-      - media-proxy
+      - media-network
     ports:
       - 9117:9117
 
-    healthcheck:
-      test: curl --fail -s http://localhost:9117/ || exit 1
-      interval: 30s
-      timeout: 10s
-      retries: 3
-
 networks:
-  media-proxy:
+  media-network:
     driver: bridge
     external: true
