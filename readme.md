@@ -1,7 +1,7 @@
 ### Installation
 
 ```
-git clone https://github.com/Luca-Castelnuovo/media.ltc.git && cd media.ltc
+git clone https://github.com/lucacastelnuovo/docker-media.git && cd docker-media
 mv * ../ && cd ../ && rm -rf media.ltc
 
 cd jackett && docker-compose up -d && cd ..
